@@ -10,8 +10,7 @@ int main() {
     {
         cout << "Number " << N << " is not natural";
         return 0;
-    }
-         
+    }         
     divided = 1;
     bool isPrime;
     for (int nextNumber = 2; nextNumber < N; nextNumber++)
