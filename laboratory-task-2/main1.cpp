@@ -1,8 +1,12 @@
-#include <iostream>
+git #include <iostream>
 #include <cctype>
+
+
 using namespace std;
 
-int main() {
+
+int main() 
+{
     int N, divided;
     cout << "Enter number N: ";
     cin >> N;
@@ -10,8 +14,7 @@ int main() {
     {
         cout << "Number " << N << " is not natural";
         return 0;
-    }
-         
+    }         
     divided = 1;
     bool isPrime;
     for (int nextNumber = 2; nextNumber < N; nextNumber++)
@@ -25,7 +28,8 @@ int main() {
                 break;
             }
         }
-        if (isPrime) {
+        if (isPrime) 
+	{
             cout << nextNumber << " ";
         }
     }
