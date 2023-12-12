@@ -41,35 +41,35 @@ void printArray(T* arr, uint32_t size) {
 }
 
 template <typename T>
-void sortFrequency(T* arr, T** matr, int32_t size, uint32_t& pos)
+void sortFrequency(T* arr, T** mtrx, int32_t size, uint32_t& position)
 {
 
     for (int32_t i = 0; i < 2; ++i)
     {
         for (int32_t j = 0; j < size; j++)
         {
-            matr[i][j] = NULL;
+            mtrx[i][j] = NULL;
         }
     }
 
-    pos = 0;//current position in the matrix
+    position = 0;//current position in the matrix
     for (int32_t i = 0; i < size; ++i) // iterates through all the elements of the array
     {
         bool found = false; //was there an element in the array
-        for (int32_t j = 0; j < pos; ++j) //iterates through the elements of the matrix to the current pos position
+        for (int32_t j = 0; j < position; ++j) //iterates through the elements of the matrix to the current position position
         {
-            if (matr[0][j] == arr[i])
+            if (mtrx[0][j] == arr[i])
             {
-                matr[1][j]++; //adding 1 to the counter
+                mtrx[1][j]++; //adding 1 to the counter
                 found = true;
                 break;
             }
         }
         if (!found)
         {
-            matr[0][pos] = arr[i]; // adds a value
-            matr[1][pos] = 1;
-            pos++;
+            mtrx[0][position] = arr[i]; // adds a value
+            mtrx[1][position] = 1;
+            ++position;
         }
     }
     // Sorted
@@ -77,10 +77,10 @@ void sortFrequency(T* arr, T** matr, int32_t size, uint32_t& pos)
     {
         for (int32_t j = i + 1; j < size; ++j)
         {
-            if (matr[1][i] <= matr[1][j])
+            if (mtrx[1][i] <= mtrx[1][j])
             {
-                std::swap(matr[1][i], matr[1][j]);
-                std::swap(matr[0][i], matr[0][j]);
+                std::swap(mtrx[1][i], mtrx[1][j]);
+                std::swap(mtrx[0][i], mtrx[0][j]);
             }
         }
     }
@@ -90,7 +90,6 @@ void sortFrequency(T* arr, T** matr, int32_t size, uint32_t& pos)
 template <typename T>
 void inputFromFile(std::ifstream &fin, T* arr, uint32_t size) 
 {
-    checkInputFile(fin);
     for (uint32_t i = 0; i < size; i++) 
     {
         fin >> arr[i];
@@ -100,41 +99,41 @@ void inputFromFile(std::ifstream &fin, T* arr, uint32_t size)
 
 
 template <typename T>
-void outputInFile(std::ofstream &fout, T* arr, T** matr, uint32_t size, uint32_t pos)
+void outputInFile(std::ofstream &fout, T* arr, T** mtrx, uint32_t size, uint32_t position)
 {
-    sortFrequency(arr, matr, size, pos);
-    for (int32_t i = 0; i < pos; ++i)
+    sortFrequency(arr, mtrx, size, position);
+    for (int32_t i = 0; i < position; ++i)
     {
-        fout << matr[0][i] << ' ';
+        fout << mtrx[0][i] << ' ';
     }
     fout << '\n';
 }
 
 template <typename T>
-void outputFromConsole(T* arr, T** matr, uint32_t size, uint32_t pos)
+void outputFromConsole(T* arr, T** mtrx, uint32_t size, uint32_t position)
 {
-    sortFrequency(arr, matr, size, pos);
-    for (int32_t i = 0; i < pos; ++i)
+    sortFrequency(arr, mtrx, size, position);
+    for (int32_t i = 0; i < position; ++i)
     {
-        std::cout << matr[0][i] << ' ';
+        std::cout << mtrx[0][i] << ' ';
     }
 }
 
 template <typename T>
-void output(std::ofstream &fout, T* arr, T** matr, int32_t size, uint32_t& pos, char way)
+void output(std::ofstream &fout, T* arr, T** mtrx, int32_t size, uint32_t& position, char way)
 {
     switch (way)
     {
     case '1':
         std::cout << "Array in file 'output.txt' \n";
-        outputInFile(fout, arr, matr, size, pos);
+        outputInFile(fout, arr, mtrx, size, position);
         break;
     case '2':
         std::cout << "Array in file 'output.txt' \n";
-        outputInFile(fout, arr, matr, size, pos);
+        outputInFile(fout, arr, mtrx, size, position);
         break;
     case '3':
-        outputFromConsole(arr, matr, size, pos);
+        outputFromConsole(arr, mtrx, size, position);
     }
 }
 
@@ -167,8 +166,7 @@ void wayInputOutput(std::ifstream &fin, T* arr, uint32_t size, char& way)
         inputFromFile(fin, arr, size);
         break;
     default:
-        std::cout << "Uncorrect valuable!!!\n";
-        wayInputOutput(fin, arr, size, way);
+        throw "Incorrect choice of input method\n";
     }
 }
 
@@ -185,7 +183,7 @@ void deleteArrAndMtrx(T* arr,  T** mtrx)
 
 int32_t main()
 {
-    uint32_t pos;
+    uint32_t position;
     size_t size;
     double checksize;
     try
@@ -197,25 +195,26 @@ int32_t main()
         double* doubleArr = new double[size];
         char* charArr = new char[size];
 
-        int32_t** intMatr = new int32_t * [2];
+        int32_t** intMtrx = new int32_t * [2];
         for (int32_t i = 0; i < 2; i++)
         {
-            intMatr[i] = new int32_t[size];
+            intMtrx[i] = new int32_t[size];
         }
 
-        double** doubleMatr = new double* [2];
+        double** doubleMtrx = new double* [2];
         for (int32_t i = 0; i < 2; i++)
         {
-            doubleMatr[i] = new double[size];
+            doubleMtrx[i] = new double[size];
         }
 
-        char** charMatr = new char* [2];
+        char** charMtrx = new char* [2];
         for (int32_t i = 0; i < 2; i++)
         {
-            charMatr[i] = new char[size];
+            charMtrx[i] = new char[size];
         }
 
         std::ifstream fin("input.txt");
+        checkInputFile(fin);
         wayInputOutput(fin, intArr, size, way);
         wayInputOutput(fin, doubleArr, size, way);
         wayInputOutput(fin, charArr, size, way);
@@ -230,22 +229,20 @@ int32_t main()
 
         std::ofstream fout("output.txt");
         std::cout << "\nInteger: \n";
-        output(fout, intArr, intMatr, size, pos, way);
+        output(fout, intArr, intMtrx, size, position, way);
         std::cout << "\nDouble: \n";
-        output(fout, doubleArr, doubleMatr, size, pos, way);
+        output(fout, doubleArr, doubleMtrx, size, position, way);
         std::cout << "\nChar: \n";
-        output(fout, charArr, charMatr, size, pos, way);
+        output(fout, charArr, charMtrx, size, position, way);
         
-        deleteArrAndMtrx(intArr, intMatr);
-        deleteArrAndMtrx(doubleArr, doubleMatr);
-        deleteArrAndMtrx(charArr, charMatr);
+        deleteArrAndMtrx(intArr, intMtrx);
+        deleteArrAndMtrx(doubleArr, doubleMtrx);
+        deleteArrAndMtrx(charArr, charMtrx);
         fout.close();
     }
     catch (const char* msg)
     {
         std::cout << msg;
     }
-
-
     return 0;
 }
