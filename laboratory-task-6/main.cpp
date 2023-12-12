@@ -3,7 +3,7 @@
 #include <ctime>
 
 
-void CheckInputFile(std::ifstream& fin)
+void checkInputFile(std::ifstream& fin)
 {
     if (!fin.good())
     {
@@ -20,7 +20,7 @@ void CheckInputFile(std::ifstream& fin)
 
 }
 
-void CheckSize(double checksize, size_t &size)
+void checkSize(double checksize, size_t &size)
 {
     std::cout << "Enter size: ";
     std::cin >> checksize;
@@ -33,7 +33,7 @@ void CheckSize(double checksize, size_t &size)
 
 
 template <typename T>
-void processArray(T* arr, uint32_t size) {
+void printArray(T* arr, uint32_t size) {
     for (uint32_t i = 0; i < size; i++) {
         std::cout << arr[i] << " ";
     }
@@ -88,9 +88,9 @@ void sortFrequency(T* arr, T** matr, int32_t size, uint32_t& pos)
 
 
 template <typename T>
-void InputFromFile(std::ifstream &fin, T* arr, uint32_t size) 
+void inputFromFile(std::ifstream &fin, T* arr, uint32_t size) 
 {
-    CheckInputFile(fin);
+    checkInputFile(fin);
     for (uint32_t i = 0; i < size; i++) 
     {
         fin >> arr[i];
@@ -100,7 +100,7 @@ void InputFromFile(std::ifstream &fin, T* arr, uint32_t size)
 
 
 template <typename T>
-void OutputInFile(std::ofstream &fout, T* arr, T** matr, uint32_t size, uint32_t pos)
+void outputInFile(std::ofstream &fout, T* arr, T** matr, uint32_t size, uint32_t pos)
 {
     sortFrequency(arr, matr, size, pos);
     for (int32_t i = 0; i < pos; ++i)
@@ -111,7 +111,7 @@ void OutputInFile(std::ofstream &fout, T* arr, T** matr, uint32_t size, uint32_t
 }
 
 template <typename T>
-void OutputFromConsole(T* arr, T** matr, uint32_t size, uint32_t pos)
+void outputFromConsole(T* arr, T** matr, uint32_t size, uint32_t pos)
 {
     sortFrequency(arr, matr, size, pos);
     for (int32_t i = 0; i < pos; ++i)
@@ -121,25 +121,25 @@ void OutputFromConsole(T* arr, T** matr, uint32_t size, uint32_t pos)
 }
 
 template <typename T>
-void Output(std::ofstream &fout, T* arr, T** matr, int32_t size, uint32_t& pos, char way)
+void output(std::ofstream &fout, T* arr, T** matr, int32_t size, uint32_t& pos, char way)
 {
     switch (way)
     {
     case '1':
         std::cout << "Array in file 'output.txt' \n";
-        OutputInFile(fout, arr, matr, size, pos);
+        outputInFile(fout, arr, matr, size, pos);
         break;
     case '2':
         std::cout << "Array in file 'output.txt' \n";
-        OutputInFile(fout, arr, matr, size, pos);
+        outputInFile(fout, arr, matr, size, pos);
         break;
     case '3':
-        OutputFromConsole(arr, matr, size, pos);
+        outputFromConsole(arr, matr, size, pos);
     }
 }
 
 template <typename T>
-void InputRandom(T* arr, uint32_t size)
+void inputRandom(T* arr, uint32_t size)
 {
     srand(rand());
     for (int i = 0; i < size; i++) 
@@ -158,13 +158,13 @@ void wayInputOutput(std::ifstream &fin, T* arr, uint32_t size, char& way)
     }
     switch (way) {
     case '1':
-        InputFromFile(fin, arr, size);
+        inputFromFile(fin, arr, size);
         break;
     case '2':
-        InputRandom(arr, size);
+        inputRandom(arr, size);
         break;
     case '3':
-        InputFromFile(fin, arr, size);
+        inputFromFile(fin, arr, size);
         break;
     default:
         std::cout << "Uncorrect valuable!!!\n";
@@ -172,26 +172,15 @@ void wayInputOutput(std::ifstream &fin, T* arr, uint32_t size, char& way)
     }
 }
 
-void deleteArr(int32_t* intArr, double* doubleArr, char* charArr, int32_t** intMatr, double** doubleMatr, char** charMatr)
+template <typename T>
+void deleteArrAndMtrx(T* arr,  T** mtrx)
 {
-    delete[] intArr;
-    delete[] doubleArr;
-    delete[] charArr;
-    for (int32_t i = 0; i < 2; ++i)
+    delete[] arr;
+    for (size_t i = 0; i < 2; ++i)
     {
-        delete[] intMatr[i];
+        delete[] mtrx[i];
     }
-    delete[]intMatr;
-    for (int32_t i = 0; i < 2; ++i)
-    {
-        delete[] doubleMatr[i];
-    }
-    delete[]doubleMatr;
-    for (int32_t i = 0; i < 2; ++i)
-    {
-        delete[] charMatr[i];
-    }
-    delete[]charMatr;
+    delete[]mtrx;
 }
 
 int32_t main()
@@ -201,7 +190,7 @@ int32_t main()
     double checksize;
     try
     {
-        CheckSize(checksize, size);
+        checkSize(checksize, size);
         char way = ' ';
 
         int32_t* intArr = new int32_t[size];
@@ -233,20 +222,23 @@ int32_t main()
         fin.close();
 
         std::cout << "\nInteger: ";
-        processArray(intArr, size);
+        printArray(intArr, size);
         std::cout << "\nDouble: ";
-        processArray(doubleArr, size);
+        printArray(doubleArr, size);
         std::cout << "\nChar: ";
-        processArray(charArr, size);
+        printArray(charArr, size);
 
         std::ofstream fout("output.txt");
         std::cout << "\nInteger: \n";
-        Output(fout, intArr, intMatr, size, pos, way);
+        output(fout, intArr, intMatr, size, pos, way);
         std::cout << "\nDouble: \n";
-        Output(fout, doubleArr, doubleMatr, size, pos, way);
+        output(fout, doubleArr, doubleMatr, size, pos, way);
         std::cout << "\nChar: \n";
-        Output(fout, charArr, charMatr, size, pos, way);
-        deleteArr(intArr, doubleArr, charArr, intMatr, doubleMatr, charMatr);
+        output(fout, charArr, charMatr, size, pos, way);
+        
+        deleteArrAndMtrx(intArr, intMatr);
+        deleteArrAndMtrx(doubleArr, doubleMatr);
+        deleteArrAndMtrx(charArr, charMatr);
         fout.close();
     }
     catch (const char* msg)
