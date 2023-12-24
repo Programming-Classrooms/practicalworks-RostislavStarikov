@@ -90,9 +90,13 @@ int main()
 {
 	try
 		{
-		double lowerLimit, upperLimit, eps, S2;
+		double lowerLimit = 0;
+		double upperLimit = 0;
+		double eps = 0;
+		double S2 = 0;
 		int32_t steps = 4;
-		char way, way_int;
+		char way = '0';
+		char way_int = '0';
 			
 		std::cout << "Enter the desired eps accuracy from the range ( 0 , 1):";
 		chekEps(eps);
