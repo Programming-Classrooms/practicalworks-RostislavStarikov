@@ -1,7 +1,11 @@
-/*Вычислить значение определения интеграла с анализом заданной подинтегральной
+/*
+Вычислить значение определения интеграла с анализом заданной подинтегральной
 коррекции с заданной границей eps
 В) по формуле средних величин;
-Д) по формуле Симпсона (параболических трапеций).*/
+Д) по формуле Симпсона (параболических трапеций).
+*/
+
+
 #include <iostream>
 #include <math.h>
 
@@ -15,6 +19,7 @@ void chekEps(double& eps)
 		throw "Uncorrect size!!!\n";
 	}
 }
+
 //Выбор формулы интеграла
 double wayFunc(double& lowerLimit, double& upperLimit, double x, char& way, double &S2)
 {
@@ -40,6 +45,7 @@ double wayFunc(double& lowerLimit, double& upperLimit, double x, char& way, doub
 		throw "Wrong function selection!!!";
 	}
 }
+
 //Вычисление интеграла способом средних прямоугольников
 void integrateMiddleRectangle(double& lowerLimit, double& upperLimit, double eps, int32_t& steps, char& way, double &S2)
 {
@@ -87,10 +93,13 @@ int main()
 		double lowerLimit, upperLimit, eps, S2;
 		int32_t steps = 4;
 		char way, way_int;
+			
 		std::cout << "Enter the desired eps accuracy from the range ( 0 , 1):";
 		chekEps(eps);
+			
 		std::cout << "Select the integral number:\t1.e^(0.1*x) / x\n\t\t\t\t2.(sqrt(0.5+x*x)) /(1+cos(0.5*x))\n\t\t\t\t3.(pow(EXP, -x) * ((sin(0.1 * x)) / (x + 1)))\n";
 		std::cin >> way;
+			
 		wayFunc(lowerLimit, upperLimit, lowerLimit, way, S2);
 		std::cout << "Choose the method of finding the integral:\t1.By the formula of the average rectangles \n\t\t\t\t\t\t2.According to Simpson's formula\n";
 		std::cin >> way_int;
@@ -105,8 +114,10 @@ int main()
 		default:
 			throw "Wrong choice of integration method\n";
 		}	
+		
 		std::cout.precision(8);
 		std::cout << "The value of the integral: " << S2 << " Number of steps = " << steps << '\n';
+			
 		return 0;
 		}
 	catch (const char* msg)
