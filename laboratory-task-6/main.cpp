@@ -194,9 +194,9 @@ void deleteArrAndMtrx(T* arr,  T** mtrx)
 
 int32_t main()
 {
-    uint32_t position;
-    size_t size;
-    double checksize;
+    uint32_t position = 0;
+    size_t size = 0;
+    double checksize = 0;
     try
     {
         checkSize(checksize, size);
