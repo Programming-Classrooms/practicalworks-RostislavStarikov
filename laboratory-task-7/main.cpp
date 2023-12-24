@@ -23,18 +23,23 @@ void processWordsFromConsole(char* line,char** digits, char** nonDigits, size_t&
 {
 
     char* word = std::strtok(line, " ");
-    while (word) {
+    while (word) 
+    {
         bool onlyDigits = true;
-        for (size_t i = 0; i < std::strlen(word); i++) {
-            if (!std::isdigit(word[i])) {
+        for (size_t i = 0; i < std::strlen(word); i++) 
+        {
+            if (!std::isdigit(word[i])) 
+            {
                 onlyDigits = false;
                 break;
             }
         }
-        if (onlyDigits) {
+        if (onlyDigits) 
+        {
             digits[digitCount++] = word;  
         }
-        else {
+        else 
+        {
             nonDigits[nonDigitCount++] = word;  
         }
         word = std::strtok(NULL, " ");
@@ -43,16 +48,19 @@ void processWordsFromConsole(char* line,char** digits, char** nonDigits, size_t&
 
  void printResultLine(char** digits, char** nonDigits, size_t digitCount,size_t nonDigitCount)
  { 
-    for (int i = 0; i < digitCount; i++) {
+    for (int i = 0; i < digitCount; i++) 
+    {
         std::cout << digits[i] << " ";
     }
 
-    for (int i = 0; i < nonDigitCount; i++) {
+    for (int i = 0; i < nonDigitCount; i++) 
+    {
         std::cout << nonDigits[i] << " ";
     }
 }
 
-int main() {
+int main() 
+{
     char line[301]; 
     char* digits[300];  
     char* nonDigits[300];  
