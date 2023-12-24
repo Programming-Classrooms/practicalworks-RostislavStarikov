@@ -3,11 +3,8 @@
 #include <cctype>
 
 
-void processWordsFromConsole(char* line) {
-    char* digits[300];  
-    char* nonDigits[300];  
-    int digitCount = 0;  
-    int nonDigitCount = 0;  
+void processWordsFromConsole(char* line,char** digits, char** nonDigits, size_t& digitCount,size_t& nonDigitCount ) 
+{
 
     char* word = std::strtok(line, " ");
     while (word) {
@@ -26,8 +23,10 @@ void processWordsFromConsole(char* line) {
         }
         word = std::strtok(NULL, " ");
     }
+}
 
-   
+ void printResultLine(char** digits, char** nonDigits, size_t digitCount,size_t nonDigitCount)
+ { 
     for (int i = 0; i < digitCount; i++) {
         std::cout << digits[i] << " ";
     }
@@ -39,10 +38,15 @@ void processWordsFromConsole(char* line) {
 
 int main() {
     char line[301]; 
+    char* digits[300];  
+    char* nonDigits[300];  
+    size_t digitCount = 0;  
+    size_t nonDigitCount = 0;  
 
     std::cout << "Enter a line : ";
     std::cin.getline(line, 301);
 
-    processWordsFromConsole(line);
+    processWordsFromConsole(line, digits, nonDigits, digitCount, nonDigitCount);
+    printResultLine(digits, nonDigits, digitCount, nonDigitCount);
     return 0;
 }
