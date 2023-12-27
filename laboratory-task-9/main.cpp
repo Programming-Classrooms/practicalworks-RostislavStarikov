@@ -1,8 +1,8 @@
 /*
-    ������ ���������� ����� input.txt ������� �� ����, ����������� �����  ��� ����������� ���������.
-    ����� ������, � ����� ����� ���������� �����  ������ ������� ����� �������������. 
-    ��������� ����� ����� ������������ �  ����������� ����� � �������� �� �������.
-    ���� ����� ���� ��������� � ����� ������.
+    Строки текстового файла input.txt состоят из слов, разделенных одним  или несколькими пробелами.
+    Перед первым, а также после последнего слова  строки пробелы могут отсутствовать. 
+    Требуется найти слова максимальной и  минимальной длины и поменять их местами.
+    Если таких слов несколько – брать первые.
 */
 
 
@@ -27,7 +27,7 @@ void checkFile(std::ifstream& fin)
     }
 }
 
-void checkWordSize
+void checkWordSize                  // Поиск минимального и максимального по длинне слова
     (
         size_t& maxLength, 
         size_t& minLength, 
@@ -48,7 +48,7 @@ void checkWordSize
     }
 }
 
-void replaceMinMaxWords
+void replaceMinMaxWords                  // Меняем местами максимального и минимального слова
     (
         std::string& resultLine, 
         std::string& maxWord, 
@@ -59,12 +59,12 @@ void replaceMinMaxWords
 {
     size_t maxPos = resultLine.find(maxWord);
     size_t minPos = resultLine.find(minWord);
-    if (minPos < maxPos)
+    if (minPos < maxPos)                // Если минимальное слово идет первым, а максимальное вторым
     {
         resultLine.replace(minPos, minWord.length(), maxWord);
         resultLine.replace(maxPos + (maxLength - minLength), maxWord.length(), minWord);
     }
-    else
+    else                                // Если максимальное слово идет первым, а минимальное вторым
     {
         resultLine.replace(maxPos, maxWord.length(), minWord);
         resultLine.replace(minPos - (maxLength - minLength), minWord.length(), maxWord);
@@ -92,7 +92,7 @@ std::string processFile(std::ifstream& fin,std::ofstream& fout, std::string deli
         while (line.size() != 0)
         {
             begInd = line.find_first_not_of(delimiters);
-            if (begInd == std::string::npos)
+            if (begInd == std::string::npos)            // Если символ, не относящийся к разделителем не найден(строка закончилась)
             {
                 line = {};
                 break;
