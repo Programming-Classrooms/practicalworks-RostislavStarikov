@@ -15,15 +15,15 @@ void checkFile(std::ifstream& fin)
 {
     if (!fin.good())
     {
-        throw "File is not founded!\n";
+        throw std::runtime_error("File is not founded!\n");
     }
     if (!fin)
     {
-        throw "Error of open file!\n";
+        throw std::runtime_error("Error of open file!\n");
     }
     if (fin.peek() == EOF)
     {
-        throw "file is empty!\n";
+        throw std::runtime_error("file is empty!\n");
     }
 }
 
@@ -126,10 +126,9 @@ int main()
         fin.close();
         fout.close();
     }
-    catch (const char* msg)
+    catch (std::runtime_error e)
     {
-        std::cerr << msg;
-        return 0;
+        std::cerr << e.what();
     }
     return 0;
 }
