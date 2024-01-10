@@ -16,7 +16,7 @@ void chekEps(double& eps)
 	std::cin >> eps;
 	if (eps < 0 || eps > 1)
 	{
-		throw "Uncorrect size!!!\n";
+		throw std::runtime_error("Uncorrect size!!!\n");
 	}
 }
 
@@ -42,7 +42,7 @@ double wayFunc(double& lowerLimit, double& upperLimit, double x, char& way, doub
 		return func;
 		break;
 	default:
-		throw "Wrong function selection!!!";
+		throw std::runtime_error("Wrong function selection!!!");
 	}
 }
 
@@ -106,6 +106,7 @@ int main()
 			
 		wayFunc(lowerLimit, upperLimit, lowerLimit, way, S2);
 		std::cout << "Choose the method of finding the integral:\t1.By the formula of the average rectangles \n\t\t\t\t\t\t2.According to Simpson's formula\n";
+		
 		std::cin >> way_int;
 		switch (way_int)
 		{
@@ -116,7 +117,7 @@ int main()
 			integrateSimpson(lowerLimit, upperLimit, steps, eps, way, S2);
 			break;
 		default:
-			throw "Wrong choice of integration method\n";
+			throw std::runtime_error("Wrong choice of integration method");
 		}	
 		
 		std::cout.precision(8);
@@ -124,9 +125,9 @@ int main()
 			
 		return 0;
 		}
-	catch (const char* msg)
+	catch (std::runtime_error e)
 		{
-			std::cerr << msg << '\n';
+			std::cerr << e.what() << '\n';
 			return -1;
 		}
 }
