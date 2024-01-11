@@ -1,11 +1,13 @@
 
-/*Вариант 29
-В одномерном массиве, состоящем из n вещественных элементов, вычислить:
--длину самой длинной упорядоченной цепочки подряд идущих элементов;
--произведение элементов массива, расположенных между максимальным по модулю и
-минимальным по модулю элементами.
-Упорядочить элементы на четных местах массива по убыванию, а на нечтных местах по
-возрастанию.*/
+/*
+	Вариант 29
+	В одномерном массиве, состоящем из n вещественных элементов, вычислить:
+	-длину самой длинной упорядоченной цепочки подряд идущих элементов;
+	-произведение элементов массива, расположенных между максимальным по модулю и
+	минимальным по модулю элементами.
+	Упорядочить элементы на четных местах массива по убыванию, а на нечтных местах по
+	возрастанию.
+*/
 
 #include <iostream>
 #include <cmath>
@@ -18,7 +20,7 @@ void checkSize(double& checkedSize)
 	std::cin >> checkedSize;
 	if (std::cin.fail() || checkedSize < 0 || checkedSize != static_cast<int32_t>(checkedSize))//Проверка на целое число
 	{
-		throw "Incorrect size!!!\n";;
+		throw std::runtime_error("Uncorrect size!!!\n");
 	}		
 }
 
@@ -34,7 +36,7 @@ bool selectingArrayInputMethod(char way)
 		return false;
 		break;
 	default:
-			throw "Incorrect type of fill array!!!";
+			throw std::runtime_error("Uncorrect type of fill array!!!");
 	}
 }
 
@@ -54,7 +56,7 @@ void inputRandom (int32_t size, double* arr)
 	std::cin >> rightBorder;
 	if (leftBorder == rightBorder)
 	{
-		throw "\nIncorrect border value (left and right borders are equal)\n";
+		throw std::runtime_error("\nUncorrect border value (left and right borders are equal)\n");
 	}
 	if (leftBorder < rightBorder)
 	{
@@ -81,7 +83,7 @@ void inputRandom (int32_t size, double* arr)
 		}
 		break;
 	default:
-		throw "\nincorrect value in choosing the type of numbers to be filled in randomly\n";
+		throw std::runtime_error("\nUncorrect value in choosing the type of numbers to be filled in randomly\n");
 	}
 }
 
