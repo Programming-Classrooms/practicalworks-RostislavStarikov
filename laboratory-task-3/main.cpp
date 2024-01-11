@@ -117,7 +117,7 @@ void findOrderedChain(int32_t size, double* arr, int32_t len , int32_t &maxLen) 
 
 //Нахождение минимального и максимального по модулю элемента и произведения
 void findMaxMinEl(int32_t size, double* arr, int32_t &minInd, int32_t &maxInd, double long result) {
-	for (uint32_t i = 1; i < size; i++)			//Проверка всего массива для макс и мин элементов
+	for (uint32_t i = 0; i < size; i++)			//Проверка всего массива для макс и мин элементов
 	{
 		if (abs(arr[i]) > abs(arr[maxInd]))	//Нахождение индекса минимального по модуля элемента
 		{
@@ -210,54 +210,53 @@ int32_t main()
 {
 	try
 	{
-	srand(time(NULL));
+		srand(time(NULL));
 
-	double chekedSize = 0;
-	int32_t len = 1, maxLen = 1,minInd = 0, maxInd = 0;
-	char way = '0';
-	char way_number = '0';
-	double long result = 1;	
+		double chekedSize = 0;
+		int32_t len = 1, maxLen = 1,minInd = 0, maxInd = 0;
+		char way = '0';
+		char way_number = '0';
+		double long result = 1;	
 
-	checkSize(chekedSize);
+		checkSize(chekedSize);
 
-	uint32_t size = static_cast<int32_t>(chekedSize);
-	double* arr = new double[size];
+		uint32_t size = static_cast<int32_t>(chekedSize);
+		double* arr = new double[size];
 
-	std::cout << "Choose how to fill the array: \n\t\t\t\t    1.Filling with random values from a range [a,b]\n\t\t\t\t    2.Filling an array with the keyboard\n";
-	std::cin >> way;
+		std::cout << "Choose how to fill the array: \n\t\t\t\t    1.Filling with random values from a range [a,b]\n\t\t\t\t    2.Filling an array with the keyboard\n";
+		std::cin >> way;
 
-	if (selectingArrayInputMethod(way))
-	{
-		inputRandom(size, arr);
+		if (selectingArrayInputMethod(way))
+		{
+			inputRandom(size, arr);
+		}
+		else
+		{
+			inputFromKeyboard(size, arr);
+		}
+
+		std::cout << "Entered array" << "\n";
+		printArray(size, arr);
+		
+		findOrderedChain(size, arr, len, maxLen);
+		std::cout << "\n" << "The length of the longest ordered chain of consecutive elements:" << maxLen << " elements." << "\n";
+		
+		findMaxMinEl(size, arr, minInd, maxInd, result);
+		std::cout << "\n" << "The minimum modulo element " << arr[minInd] << ". \nThe maximum modulo element " << arr[maxInd] << "\n";
+
+		std::cout << "\nThe arrangement of elements in even places of the array in descending order, and in odd places in ascending order.\n";
+		evenInd(size, arr);
+		oddInd(size, arr);
+		std::cout << "\nModified array" << "\n";
+		printArray(size, arr);
+		std::cout << "\n";
+
+		delete[]arr;
 	}
-	else
+
+	catch (std::runtime_error error)
 	{
-		inputFromKeyboard(size, arr);
-	}
-
-	std::cout << "Entered array" << "\n";
-	printArray(size, arr);
-	
-	findOrderedChain(size, arr, len, maxLen);
-	std::cout << "\n" << "The length of the longest ordered chain of consecutive elements:" << maxLen << " elements." << "\n";
-	
-	findMaxMinEl(size, arr, minInd, maxInd, result);
-	std::cout << "\n" << "The minimum modulo element " << arr[minInd] << ". \nThe maximum modulo element " << arr[maxInd] << "\n";
-
-	std::cout << "\nThe arrangement of elements in even places of the array in descending order, and in odd places in ascending order.\n";
-	evenInd(size, arr);
-	oddInd(size, arr);
-	std::cout << "\nModified array" << "\n";
-	printArray(size, arr);
-	std::cout << "\n";
-
-	delete[]arr;
-	}
-
-	catch (const char* msg)
-	{
-		std::cerr << msg;
-		return -1;	
+		std::cerr << error.what() << '/n';
 	}
 	return 0;
 }
