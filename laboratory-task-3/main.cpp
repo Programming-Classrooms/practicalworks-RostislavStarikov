@@ -54,6 +54,7 @@ void inputRandom (int32_t size, double* arr)
 	std::cin >> leftBorder;
 	std::cout << "\n b = ";
 	std::cin >> rightBorder;
+
 	if (leftBorder == rightBorder)
 	{
 		throw std::runtime_error("\nUncorrect border value (left and right borders are equal)\n");
@@ -62,6 +63,7 @@ void inputRandom (int32_t size, double* arr)
 	{
 		std::swap(leftBorder, rightBorder);
 	}
+
 	std::cout << "\nSelect the type of numbers: \n\t\t\t\t    1.Filling with reals\n\t\t\t\t    2.Filling with integer\n";
 	char way_number;
 	std::cin >> way_number;
@@ -124,7 +126,6 @@ void findMaxMinEl(int32_t size, double* arr, int32_t &minInd, int32_t &maxInd, d
 		if (abs(arr[i]) < abs(arr[minInd]))
 		{
 			minInd = i;
-
 		}
 	}
 
