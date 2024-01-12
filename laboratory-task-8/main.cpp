@@ -54,7 +54,7 @@ int main()
     std::string str1, str2, line;
 
     std::cout<<"Enter the first string:\n";
-	getline(std::cin, str1);
+    getline(std::cin, str1);
 
     std::cout<<"Enter the second string:\n";
     getline(std::cin, str2);
