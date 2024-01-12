@@ -72,5 +72,6 @@ int main()
 
     processWordsFromConsole(line, digits, nonDigits, digitCount, nonDigitCount);
     printResultLine(digits, nonDigits, digitCount, nonDigitCount);
+
     return 0;
 }
