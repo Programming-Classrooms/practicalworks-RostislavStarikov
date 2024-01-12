@@ -51,7 +51,7 @@ void createNewLine(std::string& str1, std::string& str2, std::string& line)
 
 int main()
 {
-	std::string str1, str2, line;
+    std::string str1, str2, line;
 
     std::cout<<"Enter the first string:\n";
 	getline(std::cin, str1);
