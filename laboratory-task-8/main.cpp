@@ -62,5 +62,6 @@ int main()
     createNewLine(str1, str2, line);
     
     std::cout << line;
+
     return 0;
 }
