@@ -19,7 +19,7 @@
 #include <cctype>
 
 
-void processWordsFromConsole(char* line,char** digits, char** nonDigits, size_t& digitCount,size_t& nonDigitCount ) 
+void processWordsFromConsole(char* line, char** digits, char** nonDigits, size_t& digitCount, size_t& nonDigitCount) 
 {
 
     char* word = std::strtok(line, " ");
