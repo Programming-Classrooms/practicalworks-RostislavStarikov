@@ -1,5 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
-#include "Fraction.hpp"
+#include "myString.hpp"
 
 String::String()
 {

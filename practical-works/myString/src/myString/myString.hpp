@@ -1,5 +1,5 @@
-#ifndef FRACTION_HPP
-#define FRACTION_HPP
+#ifndef MYSTRING_HPP
+#define MYSTRING_HPP
 #include <iostream>
 #include <cstring>
 

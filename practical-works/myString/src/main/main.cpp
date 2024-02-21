@@ -1,4 +1,4 @@
-#include "../fraction/Fraction.hpp"
+#include "../myString/myString.hpp"
 
 int main()
 {
