@@ -7,5 +7,7 @@ cc_binary(
         
         "//src/Matrix:Matrix",
         "//src/Fraction:Fraction",
+        "//src/Product:Product",
+        "//src/List:List",
     ],
 )
