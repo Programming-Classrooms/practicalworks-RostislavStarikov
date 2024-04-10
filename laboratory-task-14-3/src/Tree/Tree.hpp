@@ -1,7 +1,7 @@
 #ifndef TREE
 #define TREE
 #include <iostream>
-
+#include <cstdint>
 enum class TypeTree
 {
 	deciduous,
