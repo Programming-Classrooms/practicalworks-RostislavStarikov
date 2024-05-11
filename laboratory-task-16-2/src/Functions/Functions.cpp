@@ -254,7 +254,7 @@ void addToEachInInterval(std::vector<int>& vec, int start, int end) {
 
 void replaceEven(std::vector<int>& vec)
 {
-    int max = INT32_MIN, min = INT32_MAX;
+    int max = -2147483647, min = 2147483647;
     /*auto iterator = vec.begin();
     while (iterator != vec.end())
     {
