@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+#include <stdint.h>
 
 enum class Train_type
 {
