@@ -7,6 +7,8 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <stdint.h>
+
 
 struct Student {
     std::string name;
