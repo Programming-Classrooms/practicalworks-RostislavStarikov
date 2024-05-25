@@ -12,7 +12,7 @@ protected:
         TInfo Info; // данные
         TDequeItem* next; // указатель на следующий элемент
         TDequeItem* prev; // указатель на предыдущий элемент
-        TDequeItem(TInfo, TDequeItem*, TDequeItem*) TDeque<TInfo>::TDequeItem::TDequeItem(TInfo inInfo, TDequeItem* inNext, TDequeItem* inPrev) :
+        TDequeItem(TInfo inInfo, TDequeItem* inNext, TDequeItem* inPrev) :
             Info(inInfo),
             next(inNext),
             prev(inPrev)
@@ -29,10 +29,10 @@ public:
     TDeque(); // конструктор
     TDeque(const TDeque&); // конструктор копирования
     virtual ~TDeque(); // деструктор
-    void InsFront(TInfo); // включить элемент в голову дека
+    void InsertFront(TInfo); // включить элемент в голову дека
     void InsertRear(TInfo); // включить элемент в хвост дека
-    bool DelFront(TInfo&); // исключить элемент из головы дека
-    bool DelRear(TInfo&); // исключить элемент из хвоста дека
+    bool DeleteFront(TInfo&); // исключить элемент из головы дека
+    bool DeleteRear(TInfo&); // исключить элемент из хвоста дека
     const TDeque& operator = (const TDeque&);// оператор присваивания
     const TInfo& GetByIndex(unsigned)const; // получить элемент по индексу
     void SetByIndex(TInfo, unsigned); // изменить элемент по индексу
@@ -48,7 +48,7 @@ void TDeque<TInfo>::Erase()
 {
     while (size > 0) {
         TInfo temp;
-        DelFront(temp);
+        DeleteFront(temp);
     }
 }
 
@@ -137,7 +137,7 @@ TDeque<TInfo>::~TDeque()
 /*======================== включить элемент в голову дека ========================*/
 /*================================================================================*/
 template<typename TInfo>
-void TDeque<TInfo>::InsFront(TInfo info)
+void TDeque<TInfo>::InsertFront(TInfo info)
 {
     TDequeItem* newItem = new TDequeItem(info, front, nullptr);
     if (front != nullptr)
@@ -175,7 +175,7 @@ void TDeque<TInfo>::InsertRear(TInfo info)
 /*======================= исключить элемент из головы дека =======================*/
 /*================================================================================*/
 template<typename TInfo>
-bool TDeque<TInfo>::DelFront(TInfo& info)
+bool TDeque<TInfo>::DeleteFront(TInfo& info)
 {
     if (size == 0) return false;
 
@@ -197,7 +197,7 @@ bool TDeque<TInfo>::DelFront(TInfo& info)
 /*======================= исключить элемент из хвоста дека =======================*/
 /*================================================================================*/
 template<typename TInfo>
-bool TDeque<TInfo>::DelRear(TInfo& info)
+bool TDeque<TInfo>::DeleteRear(TInfo& info)
 {
     if (size == 0) return false;
 

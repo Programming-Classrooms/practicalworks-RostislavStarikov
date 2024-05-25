@@ -19,9 +19,9 @@ int main()
 
         // Вставка элементов в голову и хвост дека
         std::cout << "Insert elements at the front and rear of deque:\n";
-        deque.InsFront(1);
+        deque.InsertFront(1);
         deque.InsertRear(2);
-        deque.InsFront(0);
+        deque.InsertFront(0);
         deque.InsertRear(3);
 
         // Просмотр всех элементов дека
@@ -30,10 +30,10 @@ int main()
 
         // Исключение элементов из головы и хвоста дека
         int temp;
-        deque.DelFront(temp);
+        deque.DeleteFront(temp);
         std::cout << "\nDeleted front: " << temp;
 
-        deque.DelRear(temp);
+        deque.DeleteRear(temp);
         std::cout << "\nDeleted rear: " << temp;
 
         // Просмотр всех элементов дека после удалений
