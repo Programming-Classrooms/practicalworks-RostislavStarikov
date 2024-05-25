@@ -109,12 +109,16 @@ bool myString::operator != (const myString& rhs)
 /*====================================================================================*/
 
 
-const char* myString::getStr() const
+void myString::getStr(char* buffer, size_t bufferSize) const
 {
-	char* getterStr = new char[len + 1];
-	strcpy(getterStr, str);
-	return getterStr;
+    if (bufferSize > len) {
+        strcpy(buffer, str);
+    } 
+	else {
+        throw std::runtime_error("Buffer size is too small");
+    }
 }
+
 
 size_t myString::getLength() const
 {
