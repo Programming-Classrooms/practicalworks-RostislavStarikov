@@ -20,10 +20,13 @@ String::String(const String& arr)
 
 String& String::operator = (String& arr)
 {
-	len = arr.len;
-	delete[] str;
-	str = new char[len + 1];
-	strcpy(str, arr.str);
+	if (this != &arr)
+	{
+		len = arr.len;
+		delete[] str;
+		str = new char[len + 1];
+		strcpy(str, arr.str);
+	}
 	return (*this);
 }
 
