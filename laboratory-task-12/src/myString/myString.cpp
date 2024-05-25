@@ -96,7 +96,7 @@ bool myString::operator <= (const myString& rhs)
 
 bool myString::operator >= (const myString& rhs)
 {
-	return !(*this < rhs)
+	return !(*this < rhs);
 }
 
 bool myString::operator != (const myString& rhs)
@@ -149,12 +149,11 @@ bool myString::is_empty()
 }
 
 // Поиск первого вхождения символа а в строку s 
-int32_t search_first_of(const char a, const myString& s)
+int32_t myString::search_first_of(const char a)
 {
-	size_t size = strlen(s.str);
-	for (size_t i = 0; i < size; ++i)
+	for (size_t i = 0; i < len; ++i)
 	{
-		if (s.str[i] == a)
+		if (str[i] == a)
 		{
 			return i;
 		}
