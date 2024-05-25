@@ -53,7 +53,7 @@ public:
     void Clear();
 
     // Отображение содержимого списка
-    void display() const;
+    friend std::ostream& operator<<(std::ostream&, List&);
 };
 
 #endif

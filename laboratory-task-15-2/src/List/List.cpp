@@ -298,13 +298,14 @@ void List::Clear()
 /*======================== Отображение содержимого списка ========================*/
 /*================================================================================*/
 
-void List::display() const
+std::ostream& operator<<(std::ostream& out, List& obj)
 {
-    Node* current = first;
-    std::cout << "List: ";
+    List::Node* current = obj.first;
+    out << "List: ";
     while (current != nullptr) {
-        std::cout << *(current->val) << " ";
+        out << *(current->val) << " ";
         current = current->next;
     }
-    std::cout << std::endl;
+    out << std::endl;
+    return out;
 }
