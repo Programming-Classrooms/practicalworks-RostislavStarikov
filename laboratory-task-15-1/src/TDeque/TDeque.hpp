@@ -30,7 +30,7 @@ public:
     TDeque(const TDeque&); // конструктор копирования
     virtual ~TDeque(); // деструктор
     void InsFront(TInfo); // включить элемент в голову дека
-    void InsRear(TInfo); // включить элемент в хвост дека
+    void InsertRear(TInfo); // включить элемент в хвост дека
     bool DelFront(TInfo&); // исключить элемент из головы дека
     bool DelRear(TInfo&); // исключить элемент из хвоста дека
     const TDeque& operator = (const TDeque&);// оператор присваивания
@@ -62,7 +62,7 @@ void TDeque<TInfo>::Clone(const TDeque& rhs)
     {
         TDequeItem* current = rhs.front;
         while (current != nullptr) {
-            InsRear(current->Info);
+            InsertRear(current->Info);
             current = current->next;
         }
     }
@@ -156,7 +156,7 @@ void TDeque<TInfo>::InsFront(TInfo info)
 /*========================= включить элемент в хвост дека ========================*/
 /*================================================================================*/
 template<typename TInfo>
-void TDeque<TInfo>::InsRear(TInfo info)
+void TDeque<TInfo>::InsertRear(TInfo info)
 {
     TDequeItem* newItem = new TDequeItem(info, nullptr, rear);
     if (rear != nullptr)
@@ -292,7 +292,6 @@ void TDeque<TInfo>::Browse(void(*func)(TInfo&))
         func(iter->Info);
         iter = iter->next;
     }
-    std::cout << '\n';
 }
 
 /*================================================================================*/
@@ -308,7 +307,6 @@ void TDeque<TInfo>::Browse(void(*func)(TInfo)) const
         func(iter->Info);
         iter = iter->next;
     }
-    std::cout << '\n';
 }
 
 #endif // !TDEQUE_HPP
