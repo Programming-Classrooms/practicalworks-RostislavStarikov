@@ -38,7 +38,12 @@ myString& myString::operator = (myString& rhs)
 myString::~myString()
 {
 	len = 0;
-	if (str == nullptr) delete[] str;
+	if (str != nullptr)
+	{
+		delete[] str;
+		str = nullptr;
+	} 
+		
 }
 
 /*====================================================================================*/
@@ -71,64 +76,27 @@ myString& myString::operator + (const myString& rhs)
 
 bool myString::operator == (const myString& rhs)
 {
-	if (strlen(str) == strlen(rhs.str))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return (strlen(str) == strlen(rhs.str));
 }
 
 bool myString::operator < (const myString& rhs)
 {
-	{
-		if (strlen(rhs.str) < strlen(str))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+	return (strlen(rhs.str) < strlen(str));
 }
 
 bool myString::operator > (const myString& rhs)
 {
-	if (strlen(rhs.str) > strlen(str))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
-}bool myString::operator <= (const myString& rhs)
+	return !(*this < rhs);
+}
+
+bool myString::operator <= (const myString& rhs)
 {
-	{
-		if (strlen(rhs.str) <= strlen(str))
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+	return !(*this > rhs);
 }
 
 bool myString::operator >= (const myString& rhs)
 {
-	if (strlen(rhs.str) >= strlen(str))
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return !(*this < rhs)
 }
 
 bool myString::operator != (const myString& rhs)
