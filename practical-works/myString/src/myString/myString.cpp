@@ -42,16 +42,16 @@ String& String::operator += (const String& arr)
 	return *this;
 }
 
-String& String::operator + (const String& arr)
+String String::operator+(const String& arr) 
 {
-	size_t newLen = len + arr.len;
-	char* newStr = new char[newLen + 1];
-	strcpy(newStr, str);
-	strcat(newStr, arr.str);
-	delete[] str;
-	str = newStr;
-	len = newLen;
-	return *this;
+    size_t newLen = len + arr.len;
+    char* newStr = new char[newLen + 1];
+    strcpy(newStr, str);
+    strcat(newStr, arr.str);
+
+    String result(newStr);
+	
+    return result;
 }
 
 bool String::operator == (const String& arr) 
