@@ -56,69 +56,32 @@ String String::operator+(const String& arr)
 
 bool String::operator == (const String& arr) 
 {
-	if (size() == arr.size())
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return (size() == arr.size());
 }
 
 bool String::operator < (const String& arr)
 {
-	{
-		if (arr.size() < size())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+	return (size() < arr.size());
+
 }
 
 bool String::operator > (const String& arr)
 {
-	if (arr.size() > size())
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return !(*this < arr);
+
 }bool String::operator <= (const String& arr)
 {
-	{
-		if (arr.size() <= size())
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+	return (*this < arr && *this == arr);
 }
 
 bool String::operator >= (const String& arr)
 {
-	if (arr.size() >= size())
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return (*this > arr && *this == arr);
 }
 
 bool String::operator != (const String& arr) 
 {
-	return !(operator == (arr));
+	return !(*this == arr);
 }
 
 bool String::is_empty()
