@@ -139,5 +139,6 @@ String::~String()
 {
 	len = 0;
 	delete[] str;
+	str = nullptr;
 	std::cout << "\nDestruct";
 }
