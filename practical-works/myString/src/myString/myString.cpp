@@ -13,7 +13,7 @@ String::String(const char* ptr)
 
 String::String(const String& arr) 
 {
-	len = strlen(arr.str);
+	len = arr.size();
 	str = new char[len + 1];
 	strcpy(str, arr.str);
 }
@@ -56,7 +56,7 @@ String& String::operator + (const String& arr)
 
 bool String::operator == (const String& arr) 
 {
-	if (strlen(str) == strlen(arr.str))
+	if (size() == arr.size())
 	{
 		return true;
 	}
@@ -69,7 +69,7 @@ bool String::operator == (const String& arr)
 bool String::operator < (const String& arr)
 {
 	{
-		if (strlen(arr.str) < strlen(str))
+		if (arr.size() < size())
 		{
 			return true;
 		}
@@ -82,7 +82,7 @@ bool String::operator < (const String& arr)
 
 bool String::operator > (const String& arr)
 {
-	if (strlen(arr.str) > strlen(str))
+	if (arr.size() > size())
 	{
 		return true;
 	}
@@ -93,7 +93,7 @@ bool String::operator > (const String& arr)
 }bool String::operator <= (const String& arr)
 {
 	{
-		if (strlen(arr.str) <= strlen(str))
+		if (arr.size() <= size())
 		{
 			return true;
 		}
@@ -106,7 +106,7 @@ bool String::operator > (const String& arr)
 
 bool String::operator >= (const String& arr)
 {
-	if (strlen(arr.str) >= strlen(str))
+	if (arr.size() >= size())
 	{
 		return true;
 	}
@@ -131,7 +131,7 @@ const char* String::getStr()
 	return str;
 }
 
-size_t String::getLength() 
+size_t String::size() const
 {
 	return len;
 }

@@ -31,7 +31,7 @@ public:
 
 	const char* getStr() ;
 
-	size_t getLength() ;
+	size_t size() const;
 
 	friend int32_t search_first_of(const char, const String&);
 	friend int32_t search_first_of(const String&, const String&);
