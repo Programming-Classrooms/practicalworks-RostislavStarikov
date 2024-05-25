@@ -20,9 +20,9 @@ int main()
         // Вставка элементов в голову и хвост дека
         std::cout << "Insert elements at the front and rear of deque:\n";
         deque.InsFront(1);
-        deque.InsRear(2);
+        deque.InsertRear(2);
         deque.InsFront(0);
-        deque.InsRear(3);
+        deque.InsertRear(3);
 
         // Просмотр всех элементов дека
         std::cout << "Deque elements: ";
