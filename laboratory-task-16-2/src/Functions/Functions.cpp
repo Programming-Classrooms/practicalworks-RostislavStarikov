@@ -14,7 +14,7 @@ bool checkString(std::string input)
     return true;
 }
 
-void input(std::vector<int>& in)
+void inputVector(std::vector<int>& in)
 {
     std::string input;
     int number; 
@@ -49,7 +49,7 @@ void input(std::vector<int>& in)
 /*================================= Вывод вектора ================================*/
 /*================================================================================*/
 
-void print(const std::vector<int>& out)
+void printVector(const std::vector<int>& out)
 {
     auto iterator = out.begin();
     std::cout << "Вектор чисел:\t\t";
@@ -63,7 +63,7 @@ void print(const std::vector<int>& out)
 /*============================ 1) Сумма чисел вектора ============================*/
 /*================================================================================*/
 
-int sumOfVector(const std::vector<int>& vec)
+int sumVector(const std::vector<int>& vec)
 {
     /*int sum = 0;
     auto iterator = vec.begin();
@@ -209,8 +209,8 @@ size_t operator>= (int n, const std::vector<int>& vec) {
 
 void averageArithmeticalWithoutZero(std::vector<int>& vec)
 {
-    int average = static_cast<int>(sumOfVector(vec) / amountOfNumbers(vec));
-    std::cout << "\nСреднее арифметическое целой части вектора:\t" << sumOfVector(vec) << '/' << amountOfNumbers(vec) << '=' << average << std::endl;
+    int average = static_cast<int>(sumVector(vec) / amountOfNumbers(vec));
+    std::cout << "\nСреднее арифметическое целой части вектора:\t" << sumVector(vec) << '/' << amountOfNumbers(vec) << '=' << average << std::endl;
     auto iterator = vec.begin();
     while (iterator != vec.end()) {
         if (*iterator > 0) {
@@ -221,7 +221,7 @@ void averageArithmeticalWithoutZero(std::vector<int>& vec)
         }
         ++iterator;
     }
-    print(vec);
+    printVector(vec);
 }
 
 /*====================================================================================================*/
@@ -244,7 +244,7 @@ void addToEachInInterval(std::vector<int>& vec, int start, int end) {
         vec[i] += sum;
     }
     std::cout << "\nРезультат работы блока\n";
-    print(vec);
+    printVector(vec);
 }
 
 
@@ -289,7 +289,7 @@ void replaceEven(std::vector<int>& vec)
     {
         [&n, &replace]() {n = (n % 2 == 0 ? replace : n); }();
     }
-    print(vec);
+    printVector(vec);
 }
 
 /*====================================================================================================*/
@@ -320,5 +320,5 @@ void removeDuplicatesExceptFirstAbs(std::vector<int>& vec) {
             ++iterator;
         }
     }
-    print(vec);
+    printVector(vec);
 }
