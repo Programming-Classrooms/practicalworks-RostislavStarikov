@@ -37,14 +37,14 @@ public:
 	bool is_empty();
 
 	// Геттер
-	const char* getStr() const;
+	void getStr(myString&, size_t) const;
 	size_t getLength() const;
 
 	// Сеттер
 	void setStr(const char*);
 
 	// Методы поиска подстроки
-	friend int32_t search_first_of(const char, const myString&);
+	int32_t search_first_of(const char);
 
 
 	// Добавление символа в конец строки

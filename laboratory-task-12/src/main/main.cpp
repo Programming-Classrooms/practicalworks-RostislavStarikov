@@ -1,4 +1,4 @@
-#include "src/myString/myString.hpp"
+#include "../myString/myString.hpp"
 int main() 
 {
     // Тестирование конструкторов
@@ -24,7 +24,9 @@ int main()
 
     // Тестирование методов класса
     std::cout << "Length of s2: " << s2.getLength() << std::endl;
-    std::cout << "Content of s2: " << s2.getStr() << std::endl;
+    myString buffer;
+    s2.getStr(buffer, s2.getLength());
+    std::cout << "Content of s2: " << buffer << std::endl;
 
     // Добавление символа в конец строки и вывод
     s2.push_back('!');
