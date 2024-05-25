@@ -1,9 +1,11 @@
 
 #ifndef LIST_HPP
 #define LIST_HPP
-#include "../Product/Product.hpp"
+
 #include <iostream>
 #include <stdint.h>
+
+#include "../Product/Product.hpp"
 
 class List
 {

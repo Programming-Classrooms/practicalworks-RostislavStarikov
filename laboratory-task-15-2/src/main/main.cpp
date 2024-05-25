@@ -1,6 +1,7 @@
-#include "src/List/List.hpp"
-#include "../Product/Product.hpp"
 #include <iostream>
+
+#include "../Product/Product.hpp"
+#include "src/List/List.hpp"
 
 int main() {
     try
@@ -20,28 +21,28 @@ int main() {
 
     // Отображаем список
     std::cout << "Original List: " << std::endl;
-    myList.display();
+    std::cout << myList;
 
     // Проверка клонирования
     List clonedList(myList);
     std::cout << "Cloned List: " << std::endl;
-    clonedList.display();
+    std::cout << clonedList;
 
     // Проверка удаления по индексу
     myList.DeleteByIndex(1);
     std::cout << "List after deleting index 1: " << std::endl;
-    myList.display();
+    std::cout << myList;
 
     // Проверка удаления по значению
     myList.DeleteByValue(p3);
     std::cout << "List after deleting Product3: " << std::endl;
-    myList.display();
+    std::cout << myList;
 
     // Проверка изменения всех значений
     Product newProduct("ModifiedProduct", 20.0, 2025);
     myList.modifyAllValuse(newProduct);
     std::cout << "List after modifying all values: " << std::endl;
-    myList.display();
+    std::cout << myList;
 
     // Проверка сортировки
     myList.InsertByIndex(p1, 0);
@@ -50,13 +51,13 @@ int main() {
     myList.InsertByIndex(p4, 3);
     myList.Sort();
     std::cout << "Sorted List: " << std::endl;
-    myList.display();
+    std::cout << myList;
 
     // Проверка оператора присваивания
     List assignedList;
     assignedList = myList;
     std::cout << "Assigned List: " << std::endl;
-    assignedList.display();
+    std::cout << assignedList;
 }
 catch(std::exception& err)
 {
