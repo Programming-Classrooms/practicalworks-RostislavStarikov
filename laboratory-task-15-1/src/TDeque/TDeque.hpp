@@ -12,7 +12,11 @@ protected:
         TInfo Info; // данные
         TDequeItem* next; // указатель на следующий элемент
         TDequeItem* prev; // указатель на предыдущий элемент
-        TDequeItem(TInfo, TDequeItem*, TDequeItem*);
+        TDequeItem(TInfo, TDequeItem*, TDequeItem*) TDeque<TInfo>::TDequeItem::TDequeItem(TInfo inInfo, TDequeItem* inNext, TDequeItem* inPrev) :
+            Info(inInfo),
+            next(inNext),
+            prev(inPrev)
+    {}
     };
     /* указатели на первый и последний элементы в списке */
     TDequeItem* front, * rear;
@@ -35,14 +39,6 @@ public:
     void Browse(void(*)(TInfo&)); // просмотр с изменением элементов
     void Browse(void(*)(TInfo)) const; // просмотр без изменения элементов
 };
-
-// Конструктор с параметрами для элемента дека
-template<typename TInfo>
-inline TDeque<TInfo>::TDequeItem::TDequeItem(TInfo inInfo, TDequeItem* inNext, TDequeItem* inPrev) :
-    Info(inInfo),
-    next(inNext),
-    prev(inPrev)
-{}
 
 /*================================================================================*/
 /*============================ удаление всех элементов ===========================*/
