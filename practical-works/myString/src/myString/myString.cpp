@@ -1,11 +1,8 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "myString.hpp"
 
-String::String()
-{
-	str = 0;
-	len = 0;
-}
+String::String() : str(nullptr), len(0)
+{}
 
 String::String(const char* ptr)
 {
