@@ -119,7 +119,7 @@ void List::InsertByIndex(const Product& value, size_t ind)
     {
         if (slow-> next == nullptr)
         {
-            throw std::out_of_range("Index out of range!!!");
+            throw std::out_of_range("Index out of range!!!(inserting an element at the end)");
         }
 
         slow = slow->next;
@@ -157,7 +157,7 @@ void List::DeleteByIndex(size_t ind)
 
         if (slow-> next == nullptr)
         {
-            throw std::out_of_range("Index out of range!!!");
+            throw std::out_of_range("Index out of range!!!(inserting an element at the beginning)");
         }
 
         slow = slow->next;
