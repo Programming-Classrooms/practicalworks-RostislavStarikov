@@ -8,15 +8,15 @@ int main()
 
 		std::vector<int> vec; 
 		int search;
-		input(vec);
+		inputVector(vec);
 		std::sort(vec.begin(), vec.end());
-		print(vec);
+		printVector(vec);
 
 		// ##### 1 #####
-		std::cout << "Сумма чисел вектора:\t\t" << sumOfVector(vec) << '\n';
+		std::cout << "Сумма чисел вектора:\t\t" << sumVector(vec) << '\n';
 
 		// ##### 2 #####
-		std::cout << "Количество чисел векторa:\t" << amountOfNumbers(vec);
+		std::cout << "Количество чисел векторa:\t" << amountNumbers(vec);
 		
 		// ##### 3 #####
 		std::cout << "\nВведите число для подсчета сравнения с другими числами:\t";

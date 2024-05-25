@@ -65,13 +65,6 @@ void printVector(const std::vector<int>& out)
 
 int sumVector(const std::vector<int>& vec)
 {
-    /*int sum = 0;
-    auto iterator = vec.begin();
-    while (iterator != vec.end()) {
-        sum += *iterator;
-        ++iterator;
-    }
-    return sum;*/
     return std::accumulate(vec.begin(), vec.end(), 0);
 }
 
@@ -81,99 +74,8 @@ int sumVector(const std::vector<int>& vec)
 
 size_t amountOfNumbers(const std::vector<int>& vec)
 {
-   /* int count = 0;
-    auto iterator = vec.begin();
-    while (iterator != vec.end())
-    {
-        ++count;
-        ++iterator;
-    }
-    return count;*/
     return vec.size();
 }
-
-/*================================================================================*/
-/*====== Сравнение и подсчет чисел вектора с заданным числом(через итератор) =====*/
-/*================================================================================*/
-
-
-//size_t operator< (int n, const std::vector<int>& vec)
-//{
-//    size_t count = 0;
-//    auto iterator = vec.begin();
-//    while (iterator != vec.end()) {
-//        if (*iterator < n) {
-//            ++count;
-//        }
-//        else {
-//            break;
-//        }
-//        ++iterator;
-//    }
-//    return count;
-//}
-//size_t operator> (int n, const std::vector<int>& vec)
-//{
-//    size_t count = 0;
-//    auto iterator = vec.end() - 1;
-//    while (iterator != vec.begin()) {
-//        if (*iterator > n) {
-//            ++count;
-//        }
-//        else {
-//            break;
-//        }
-//        --iterator;
-//    }
-//    return count;
-//}
-//size_t operator==(int n, const std::vector<int>& vec)
-//{
-//    size_t count = 0;
-//    auto iterator = vec.begin();
-//    while (iterator != vec.end()) {
-//        if (*iterator == n) {
-//            ++count;
-//        }
-//        ++iterator;
-//    }
-//    return count;
-//}
-//size_t operator!=(int n, const std::vector<int>& vec)
-//{
-//    return amountOfNumbers(vec) - operator==(n,vec);
-//}
-//size_t operator<= (int n, const std::vector<int>& vec)
-//{
-//    size_t count = 0;
-//    auto iterator = vec.begin();
-//    while (iterator != vec.end()) {
-//        if (*iterator <= n) {
-//            ++count;
-//        }
-//        else {
-//            return count;
-//        }
-//        ++iterator;
-//    }
-//    return count;
-//}
-//size_t operator>= (int n, const std::vector<int>& vec)
-//{
-//    size_t count = 0;
-//    auto iterator = vec.end() - 1;
-//    while (iterator != vec.begin()) {
-//        if (*iterator >= n) {
-//            ++count;
-//        }
-//        else {
-//            return count;
-//        }
-//        --iterator;
-//    }
-//    return count;
-//}
-
 
 /*================================================================================*/
 /*=== Сравнение и подсчет чисел вектора с заданным числом(через лямбда-функцию) ==*/
@@ -255,19 +157,7 @@ void addToEachInInterval(std::vector<int>& vec, int start, int end) {
 void replaceEven(std::vector<int>& vec)
 {
     int max = -2147483647, min = 2147483647;
-    /*auto iterator = vec.begin();
-    while (iterator != vec.end())
-    {
-        if (*iterator > max)
-        {
-            max = *iterator;
-        }
-        if (*iterator < min)
-        {
-            min = *iterator;
-        }
-        ++iterator;
-    }*/
+
     for (int n : vec)
     {
         [&max, n]() {max = (max < n ? n : max); }();
@@ -277,14 +167,7 @@ void replaceEven(std::vector<int>& vec)
     std::cout << "Максимальный элемент вектора:\t" << max;
     std::cout << "\nМинимальный элемент вектора:\t" << min;
     std::cout << "\nИх разность:\t" << replace << std::endl;
-   /* auto iterator = vec.begin();
-    while (iterator != vec.end())
-    {
-        if (*iterator % 2 == 0) {
-            *iterator = replace;
-        }
-        ++iterator;
-    }*/
+
     for (int& n : vec)
     {
         [&n, &replace]() {n = (n % 2 == 0 ? replace : n); }();
