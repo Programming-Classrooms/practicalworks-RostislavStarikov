@@ -8,6 +8,9 @@ private:
 	size_t line;
 	size_t column;
 	double** mtrx;
+
+	// Функция для вычисления элемента результирующей матрицы после умножения
+	friend double multiplication(const Matrix&, const Matrix&, size_t, size_t);
 public:
 	// Конструктор по умолчанию
 	Matrix();
@@ -37,9 +40,6 @@ public:
 	Matrix operator*(const double) const;
 	friend Matrix operator*(const double, const Matrix&);
 	Matrix operator*(const Matrix&) const;
-
-	// Функция для вычисления элемента результирующей матрицы после умножения
-	friend double multiplication(const Matrix&, const Matrix&, size_t, size_t);
 
 	// Операторы деления матрицы на число
 	Matrix operator/(const int32_t) const;
