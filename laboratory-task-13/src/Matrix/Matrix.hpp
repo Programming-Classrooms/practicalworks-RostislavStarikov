@@ -53,6 +53,15 @@ public:
 	// Вычитание матриц
 	Matrix operator-(const Matrix&);
 
+	// Функция нахождения миноров матрицы
+	Matrix getMatrixMinor(const Matrix&, size_t row, size_t col);
+
+	// Функция нахождения определителя
+	double matrixDet(const Matrix&, size_t);
+
+	// Оболочка для функции нахождения определителя
+	double det();
+
 	// Ввод и вывод матрицы
 	friend std::ostream& operator<<(std::ostream&, const Matrix&);
 	friend std::istream& operator>>(std::istream&, Matrix&);

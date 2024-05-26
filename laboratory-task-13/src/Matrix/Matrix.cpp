@@ -256,6 +256,63 @@ Matrix Matrix::operator-(const Matrix& rhs)
     return *this;
 }
 
+/*================================================================================*/
+/*====================== Функция нахождения миноров матрицы ======================*/
+/*================================================================================*/
+
+Matrix Matrix::getMatrixMinor(const Matrix& original, size_t row, size_t col) 
+{
+    Matrix newMatrix(original.line - 1, original.column - 1);
+
+    size_t offsetRow = 0; 
+
+    for (size_t i = 0; i < original.line - 1; ++i) 
+    {
+        if (i == row) offsetRow = 1;
+    
+        size_t offsetCol = 0;
+    
+        for (size_t j = 0; j < original.column - 1; ++j) 
+        {
+            if (j == col) offsetCol = 1;
+            newMatrix.mtrx[i][j] = original.mtrx[i + offsetRow][j + offsetCol];
+        }
+    }
+    return newMatrix;
+}
+
+/*================================================================================*/
+/*======================== Функция нахождения определителя =======================*/
+/*================================================================================*/
+
+double Matrix::matrixDet(const Matrix& original, size_t size) {
+    if (size == 1) return original.mtrx[0][0];
+    if (size == 2) return original.mtrx[0][0] * original.mtrx[1][1] - original.mtrx[0][1] * original.mtrx[1][0];
+
+    double det = 0;
+    int degree = 1;
+
+    for (size_t j = 0; j < size; ++j) 
+    {
+        Matrix newMatrix = getMatrixMinor(original, 0, j);
+        det += degree * original.mtrx[0][j] * matrixDet(newMatrix, size - 1);
+        degree *= -1;
+    }
+
+    return det;
+}
+
+/*================================================================================*/
+/*================= Оболочка для функции нахождения определителя =================*/
+/*================================================================================*/
+
+double Matrix::det()
+{
+    if (this->column != this->line) throw std::runtime_error("Error when calculating the determinant! The matrix is ​​not square!!!");
+    Matrix temp(*this);
+    return matrixDet(temp,temp.column);
+}
+
 /*=============================================================================*/
 /*========================Ввод и вывод матрицы=================================*/
 /*=============================================================================*/
