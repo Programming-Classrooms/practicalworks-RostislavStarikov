@@ -1,15 +1,5 @@
 #include "Matrix.hpp"
 
-double multiplication(const Matrix& lhs, const Matrix& rhs, size_t i, size_t j)
-{
-    double res;
-    res = 0;
-    for (int k = 0; k < lhs.column; ++k)
-    {
-        res += lhs.mtrx[i][k] * rhs.mtrx[k][j];
-    }
-    return res;
-}
 /*=============================================================================*/
 /*==============================Конструкторы===================================*/
 /*=============================================================================*/
@@ -172,7 +162,11 @@ Matrix Matrix::operator*(const Matrix& rhs) const
     {
         for (size_t j = 0; j < result.column; ++j)
         {
-            result.mtrx[i][j] = multiplication(*this, rhs, i, j);
+            result.mtrx[i][j] = 0;
+            for (size_t k = 0; k < this->column; ++k)
+            {
+                result.mtrx[i][j] += this->mtrx[i][k] * rhs.mtrx[k][j]; 
+            }
         }
     }
     return result;

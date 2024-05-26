@@ -9,8 +9,6 @@ private:
 	size_t column;
 	double** mtrx;
 
-	// Функция для вычисления элемента результирующей матрицы после умножения
-	friend double multiplication(const Matrix&, const Matrix&, size_t, size_t);
 public:
 	// Конструктор по умолчанию
 	Matrix();
