@@ -51,6 +51,7 @@ Fraction Fraction::operator+(const Fraction& rhs) const
 	Fraction result(*this); // Создаем копию текущего объекта
 	result.numerator = this->numerator * rhs.denominator + rhs.numerator * this->denominator;
 	result.denominator = this->denominator * rhs.denominator;
+	result.reducing();
 	return result;
 }
 Fraction Fraction::operator-(const Fraction& rhs) const
@@ -58,6 +59,7 @@ Fraction Fraction::operator-(const Fraction& rhs) const
 	Fraction result(*this);
 	result.numerator = this->numerator * rhs.denominator - rhs.numerator * this->denominator;
 	result.denominator = this->denominator * rhs.denominator;
+	result.reducing();
 	return result;
 }
 Fraction Fraction::operator*(const Fraction& rhs) const
@@ -65,6 +67,7 @@ Fraction Fraction::operator*(const Fraction& rhs) const
 	Fraction result(*this);
 	result.numerator = this->numerator * rhs.numerator;
 	result.denominator = this->denominator * rhs.denominator;
+	result.reducing();
 	return result;
 }
 Fraction Fraction::operator/(const Fraction& rhs) const
@@ -73,6 +76,7 @@ Fraction Fraction::operator/(const Fraction& rhs) const
 	Fraction result(*this);
 	result.numerator = this->numerator * rhs.denominator;
 	result.denominator = this->denominator * rhs.numerator;
+	result.reducing();
 	return result;
 }
 /*================================================================================*/
@@ -84,6 +88,7 @@ Fraction Fraction::operator+(const int32_t rhs) const
 	Fraction result(*this);
 	int32_t temp = this->denominator * rhs;
 	result.numerator = this->numerator + temp;
+	result.reducing();
 	return result;
 }
 Fraction Fraction::operator-(const int32_t rhs) const
@@ -91,6 +96,7 @@ Fraction Fraction::operator-(const int32_t rhs) const
 	Fraction result(*this);
 	int32_t temp = this->denominator * rhs;
 	result.numerator = this->numerator - temp;
+	result.reducing();
 	return result;
 }
 Fraction Fraction::operator*(const int32_t rhs) const
@@ -98,6 +104,7 @@ Fraction Fraction::operator*(const int32_t rhs) const
 	Fraction result(*this);
 	int32_t temp = this->numerator * rhs;
 	result.numerator = temp;
+	result.reducing();
 	return result;
 }
 Fraction Fraction::operator/(const int32_t rhs) const
@@ -106,6 +113,7 @@ Fraction Fraction::operator/(const int32_t rhs) const
 	Fraction result(*this);
 	int32_t temp = this->denominator * rhs;
 	result.denominator = temp;
+	result.reducing();
 	return result;
 }
 /*================================================================================*/
@@ -114,22 +122,22 @@ Fraction Fraction::operator/(const int32_t rhs) const
 
 Fraction operator+(const int32_t lhs, const Fraction& rhs)
 {
-	return rhs + lhs;
+	return (rhs + lhs).reducing();
 }
 Fraction operator-(const int32_t lhs, const Fraction& rhs)
 {
 	Fraction result(lhs * rhs.denominator - rhs.numerator, rhs.denominator);
-	return result;
+	return result.reducing();
 }
 Fraction operator*(const int32_t lhs, const Fraction& rhs)
 {
-	return rhs * lhs;
+	return (rhs * lhs).reducing();
 }
 Fraction operator/(const int32_t lhs, const Fraction& rhs)
 {
 	Fraction result(lhs * rhs.denominator, rhs.numerator);
 	Fraction::checkDenom(result);
-	return result;
+	return result.reducing();
 }
 
 /*================================================================================*/
@@ -186,13 +194,13 @@ double operator/(const double& lhs, const Fraction& rhs)
 Fraction Fraction::operator++() const
 {
 
-	return (*this + 1);
+	return (*this + 1).reducing();
 }
 Fraction Fraction::operator++(int32_t post)
 {
 	Fraction temp(*this);
 	*this = *this + 1;
-	return temp;
+	return temp.reducing();
 }
 /*================================================================================*/
 /*=============================== Декрементирование ==============================*/
@@ -201,13 +209,13 @@ Fraction Fraction::operator++(int32_t post)
 Fraction Fraction::operator--() const
 {
 
-	return (*this - 1);
+	return (*this - 1).reducing();
 }
 Fraction Fraction::operator--(int32_t post)
 {
 	Fraction temp(*this);
 	*this = *this - 1;
-	return temp;
+	return temp.reducing();
 }
 /*================================================================================*/
 /*========================== Перегрузка унарного минуса ==========================*/
@@ -215,7 +223,7 @@ Fraction Fraction::operator--(int32_t post)
 
 Fraction Fraction::operator-()
 {
-	return (*this * (-1));
+	return (*this * (-1)).reducing();
 }
 /*================================================================================*/
 /*======================= Перегрузка ! (перевернуть дробь) =======================*/
@@ -224,7 +232,7 @@ Fraction Fraction::operator-()
 Fraction Fraction::operator!()
 {
 	Fraction result(this->denominator, this->numerator);
-	return result;
+	return result.reducing();
 }
 /*================================================================================*/
 /*============================= Сравнение дробь-дробь ============================*/
@@ -392,19 +400,19 @@ bool operator>=(double rhs, const Fraction& lhs)
 
 Fraction Fraction::operator+=(const Fraction& rhs)
 {
-	return (*this + rhs);
+	return (*this + rhs).reducing();
 }
 Fraction Fraction::operator-=(const Fraction& rhs)
 {
-	return (*this - rhs);
+	return (*this - rhs).reducing();
 }
 Fraction Fraction::operator*=(const Fraction& rhs)
 {
-	return (*this * rhs);
+	return (*this * rhs).reducing();
 }
 Fraction Fraction::operator/=(const Fraction& rhs)
 {
-	return (*this / rhs);
+	return (*this / rhs).reducing();
 }
 /*================================================================================*/
 /*===================== Смешанные операторы дробь-целое число ====================*/
@@ -528,6 +536,4 @@ std::istream& operator>>(std::istream& in, Fraction& rhs)
 /*================================================================================*/
 
 Fraction::~Fraction()
-{
-
-}
+{}
