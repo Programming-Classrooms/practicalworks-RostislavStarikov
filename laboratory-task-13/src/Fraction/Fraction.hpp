@@ -8,6 +8,9 @@ class Fraction
 private:
 	int32_t numerator;
 	int32_t denominator;
+
+	// Сокращение числителся и знаменателя на общий делитель
+	Fraction& reducing();
 public:
 
 	// Конструкторы
@@ -130,9 +133,6 @@ public:
 
 	// Приведение к вещественному виду
 	double toDouble() const;
-
-	// Сокращение числителся и знаменателя на общий делитель
-	Fraction& reducing();
 
 	// Поток вывода для класса дробь
 	friend std::ostream& operator << (std::ostream&, const Fraction&);
