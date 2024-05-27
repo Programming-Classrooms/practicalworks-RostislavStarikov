@@ -72,7 +72,7 @@ int sumVector(const std::vector<int>& vec)
 /*========================== 2) Количество чисел вектора =========================*/
 /*================================================================================*/
 
-size_t amountOfNumbers(const std::vector<int>& vec)
+size_t amountNumbers(const std::vector<int>& vec)
 {
     return vec.size();
 }
@@ -94,7 +94,7 @@ size_t operator==(int n, const std::vector<int>& vec) {
 }
 
 size_t operator!=(int n, const std::vector<int>& vec) {
-    return amountOfNumbers(vec) - std::count_if(vec.begin(), vec.end(), [n](int x) {return x == n; });
+    return amountNumbers(vec) - std::count_if(vec.begin(), vec.end(), [n](int x) {return x == n; });
 }
 
 size_t operator<= (int n, const std::vector<int>& vec) {
@@ -111,8 +111,8 @@ size_t operator>= (int n, const std::vector<int>& vec) {
 
 void averageArithmeticalWithoutZero(std::vector<int>& vec)
 {
-    int average = static_cast<int>(sumVector(vec) / amountOfNumbers(vec));
-    std::cout << "\nСреднее арифметическое целой части вектора:\t" << sumVector(vec) << '/' << amountOfNumbers(vec) << '=' << average << std::endl;
+    int average = static_cast<int>(sumVector(vec) / amountNumbers(vec));
+    std::cout << "\nСреднее арифметическое целой части вектора:\t" << sumVector(vec) << '/' << amountNumbers(vec) << '=' << average << std::endl;
     auto iterator = vec.begin();
     while (iterator != vec.end()) {
         if (*iterator > 0) {
