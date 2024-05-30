@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <algorithm> // Для корректной работы std::remove
 
 static std::string currentISBN = "AAAAAA";
 
