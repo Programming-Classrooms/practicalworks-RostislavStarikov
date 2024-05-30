@@ -22,6 +22,13 @@ int main()
 		{
 			std::cout << it.first << " : " << it.second << '\n';
 		}
+
+		std::cout << "\nСозданный map из уникальных маршрутов BusTrack\n";
+		std::set<uint16_t> setBusTrack;
+		for (auto it : a.createSet(setBusTrack))
+		{
+			std::cout << it << ' ';
+		}
 	}
 	catch (std::exception& e)
 	{

@@ -10,6 +10,9 @@ BusTrackVector::BusTrackVector(const BusTrackVector& obj)
     Vector = obj.Vector;
 }
 
+/*================================================================================*/
+/*============================== Сортировка вектора ==============================*/
+/*================================================================================*/
 
 void BusTrackVector::SortByNumberBus()
 {
@@ -41,6 +44,9 @@ void BusTrackVector::SortByNumberTrack()
     }
 }
 
+/*================================================================================*/
+/*======================== Создание контейнеров map и set ========================*/
+/*================================================================================*/
 
 std::map<uint16_t, BusTrack>& BusTrackVector::createMap(std::map<uint16_t, BusTrack>& inMap)
 {
@@ -49,6 +55,15 @@ std::map<uint16_t, BusTrack>& BusTrackVector::createMap(std::map<uint16_t, BusTr
         inMap[obj.getNumberBus()] = obj;
     }
     return inMap;
+}
+
+std::set<uint16_t>& BusTrackVector::createSet(std::set<uint16_t>& inSet)
+{
+    for (auto obj : Vector)
+    {
+        inSet.insert(obj.getNumberTrack());
+    }
+    return inSet;
 }
 
 /*================================================================================*/
