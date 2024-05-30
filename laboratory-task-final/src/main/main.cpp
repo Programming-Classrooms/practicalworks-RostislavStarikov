@@ -29,6 +29,12 @@ int main()
 		{
 			std::cout << it << ' ';
 		}
+
+		int32_t numb;
+		std::cout << "\nВведите номер маршрута для просмотра всех автобусов, следующих по нему:\t";
+		std::cin >> numb;
+		checkNumber(numb);
+		a.outputFromTrack(numb);
 	}
 	catch (std::exception& e)
 	{

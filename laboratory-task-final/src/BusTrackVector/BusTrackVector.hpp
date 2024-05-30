@@ -21,8 +21,9 @@ void SortByNumberBus();  // Сортировка по номеру автобу�
 void SortByNumberTrack();// Сортировка по номеру маршрута
 
 std::map<uint16_t, BusTrack>& createMap(std::map<uint16_t, BusTrack>&); // Создание контейнера map
+std::set<uint16_t>& createSet(std::set<uint16_t>&);                     // Создание контейнера set  
 
-std::set<uint16_t>& createSet(std::set<uint16_t>&);                       // Создание контейнера set  
+void outputFromTrack(uint16_t);                                // Вывод списка автобусов указанного маршрута
 
 std::vector<BusTrack> getVector() const;     // Геттер вектора
 
