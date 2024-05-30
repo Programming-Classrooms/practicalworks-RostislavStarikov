@@ -73,12 +73,7 @@ std::ostream& operator<<(std::ostream& out, const Library& library)
 {
     for (auto book : library.getBook())
     {
-        out << "\n=================================";
-        out << "\nUDC:\t\t\t"   << book.getUDC();
-        out << "\nAuthors:\t\t" << book.getList();
-        out << "\nTitle:\t\t\t" << book.getTitle();
-        out << "\nYear of publish:\t" << book.getYear();
-        out << "\n=================================";
+        out << book;
     }
     return out;
 }
