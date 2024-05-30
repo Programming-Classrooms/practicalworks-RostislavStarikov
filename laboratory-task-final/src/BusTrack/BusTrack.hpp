@@ -32,6 +32,7 @@ uint16_t getNumberBus() const;      // Геттер номера автобус�
 std::string getDriver() const;      // Геттер фамилии водителя
 std::string getBrandBus() const;    // Геттер марки автобуса
 
+bool operator==(BusTrack&);         // Перегрузка оператора сравнения
 friend std::ostream& operator<<(std::ostream&, const BusTrack&);    // Перегрузка оператора <<
 friend std::istream& operator>>(std::istream&, BusTrack&);    // Перегрузка оператора >>
 

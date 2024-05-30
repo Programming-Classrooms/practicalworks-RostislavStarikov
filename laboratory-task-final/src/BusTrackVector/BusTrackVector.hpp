@@ -25,6 +25,8 @@ std::set<uint16_t>& createSet(std::set<uint16_t>&);                     // Со�
 
 void outputFromTrack(uint16_t);                                // Вывод списка автобусов указанного маршрута
 
+void deleteByBus(BusTrack&);                                   // Удаление из вектора определенного автобуса
+
 std::vector<BusTrack> getVector() const;     // Геттер вектора
 
 friend std::ostream& operator<<(std::ostream&, const BusTrackVector&);  // Перегрузка оператора вывода

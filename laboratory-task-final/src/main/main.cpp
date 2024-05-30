@@ -35,6 +35,15 @@ int main()
 		std::cin >> numb;
 		checkNumber(numb);
 		a.outputFromTrack(numb);
+
+		BusTrack delBus;
+		std::cout << "\nВведите данные для удаления автобуса:(номер маршрута, водитель, номер автобуса, марка автобуса))\n";
+		std::cin >> delBus;
+
+		a.deleteByBus(delBus);
+		std::cout << "\nВсе автобусы после удаления заданного автобуса:" << a;
+		
+
 	}
 	catch (std::exception& e)
 	{

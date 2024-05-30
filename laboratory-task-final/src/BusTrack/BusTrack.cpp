@@ -17,6 +17,15 @@ BusTrack::BusTrack  (uint16_t inNumberBus,
 BusTrack::BusTrack(const BusTrack& rhs) : NumberBus(rhs.NumberBus), Driver(rhs.Driver), NumberTrack(rhs.NumberTrack), BrandBus(rhs.BrandBus)
 {}
 
+/*================================================================================*/
+/*======================== Перегрузка оператора сравнения ========================*/
+/*================================================================================*/
+
+bool BusTrack::operator==(BusTrack& rhs)
+{
+    return (NumberBus == rhs.NumberBus && Driver == rhs.Driver && NumberTrack == rhs.NumberTrack && BrandBus == rhs.BrandBus);
+}
+
 
 /*================================================================================*/
 /*==================================== Геттеры ===================================*/
